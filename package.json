@@ -1,0 +1,32 @@
+{
+  "name": "playstation-style-launcher",
+  "version": "1.0.0",
+  "description": "Console-style PC game launcher with library scanning, playtime tracking and game launching.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server-preview.js",
+    "desktop": "electron .",
+    "dev": "node server-preview.js",
+    "test": "node tests/smoke.js",
+    "test:ui": "playwright test",
+    "dist:win": "electron-builder --win portable",
+    "dist:win:dir": "electron-builder --win --dir"
+  },
+  "build": {
+    "appId": "com.launcher.console",
+    "productName": "Console Launcher",
+    "directories": { "output": "release" },
+    "files": ["electron/**/*", "lib/**/*", "public/**/*", "server.js", "package.json"],
+    "win": { "target": ["portable"], "artifactName": "ConsoleLauncher-${version}-Portable.exe" },
+    "portable": { "artifactName": "ConsoleLauncher-${version}-Portable.exe" }
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "electron": "^41.7.1",
+    "electron-builder": "^26.18.0",
+    "sharp": "^0.35.5"
+  }
+}

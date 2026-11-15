@@ -1,0 +1,562 @@
+{
+  "games": [
+    {
+      "id": "prank",
+      "name": "[Bober Bros] It's Just A Prank",
+      "sortName": "[bober bros] it's just a prank",
+      "source": "steam",
+      "appId": 3001730,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 8040,
+      "lastPlayed": 1794586099544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2024,
+      "platform": "PC (Windows)",
+      "cover": "/assets/prank-cover.jpg",
+      "hero": "/assets/prank-hero.jpg",
+      "logo": "/assets/prank-logo.png",
+      "description": "Короткий психологический хоррор о безобидной шутке, которая зашла слишком далеко.",
+      "genres": [
+        "Horror",
+        "Indie"
+      ],
+      "developers": [
+        "Bober Bros"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 0
+    },
+    {
+      "id": "hole",
+      "name": "[Bober Bros] The Hole",
+      "sortName": "[bober bros] the hole",
+      "source": "steam",
+      "appId": 3037930,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 6120,
+      "lastPlayed": 1794326899544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2025,
+      "platform": "PC (Windows)",
+      "cover": "/assets/hole-cover.jpg",
+      "hero": "/assets/hole-hero.jpg",
+      "logo": "/assets/hole-logo.png",
+      "description": "Что-то смотрит на тебя из дыры. Не смотри в ответ.",
+      "genres": [
+        "Horror",
+        "Indie"
+      ],
+      "developers": [
+        "Bober Bros"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 1
+    },
+    {
+      "id": "35mm",
+      "name": "35MM",
+      "sortName": "35mm",
+      "source": "steam",
+      "appId": 466500,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 18480,
+      "lastPlayed": 1793981299544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2016,
+      "platform": "PC (Windows)",
+      "cover": "/assets/35mm-cover.jpg",
+      "hero": "/assets/35mm-hero.jpg",
+      "logo": "/assets/35mm-logo.png",
+      "description": "Постсоветская дорога, туман и два путника. Атмосферное приключение о пустоте и памятье.",
+      "genres": [
+        "Adventure",
+        "Indie"
+      ],
+      "developers": [
+        "Носков Сергей"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 2
+    },
+    {
+      "id": "plague",
+      "name": "A Plague Tale: Innocence",
+      "sortName": "plague tale: innocence",
+      "source": "steam",
+      "appId": 752590,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": false,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 0,
+      "lastPlayed": null,
+      "addedAt": 1792166899544,
+      "releaseYear": 2019,
+      "platform": "PC (Windows)",
+      "cover": "/assets/plague-cover.jpg",
+      "hero": "/assets/plague-bg.jpg",
+      "logo": "/assets/plague-logo-white.png",
+      "description": "1349 год. Чума опустошает Францию. Амиция и её младший брат Гуго бегут от Инквизиции и орд крыс, несущих чёрную смерть.",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Stealth"
+      ],
+      "developers": [
+        "Asobo Studio"
+      ],
+      "publishers": [
+        "Focus Entertainment"
+      ],
+      "cloud": true,
+      "order": 3
+    },
+    {
+      "id": "afterfall",
+      "name": "Afterfall InSanity Extended Edition",
+      "sortName": "afterfall insanity extended edition",
+      "source": "steam",
+      "appId": 224420,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 12300,
+      "lastPlayed": 1792944499544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2012,
+      "platform": "PC (Windows)",
+      "cover": "/assets/afterfall-sg-8734c5.png",
+      "hero": "/assets/afterfall-hero-sg.png",
+      "logo": "/assets/afterfall-logo-sg.png",
+      "description": "Постапокалиптический хоррор в бункерах и руинах. Темнота, безумие и то, что осталось от человечества.",
+      "genres": [
+        "Horror",
+        "Action"
+      ],
+      "developers": [
+        "Intoxicate Studios"
+      ],
+      "publishers": [],
+      "cloud": false,
+      "order": 4
+    },
+    {
+      "id": "alanwake",
+      "name": "Alan Wake",
+      "sortName": "alan wake",
+      "source": "steam",
+      "appId": 108710,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 42420,
+      "lastPlayed": 1794672499544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2012,
+      "platform": "PC (Windows)",
+      "cover": "/assets/alanwake-cover.jpg",
+      "hero": "/assets/alanwake-hero.jpg",
+      "logo": "/assets/alanwake-logo.png",
+      "description": "Писатель Алан Уэйк ищет пропавшую жену в городке, где его рукопись оживает — и убивает.",
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "developers": [
+        "Remedy Entertainment"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 5
+    },
+    {
+      "id": "american-nightmare",
+      "name": "Alan Wake's American Nightmare",
+      "sortName": "alan wake's american nightmare",
+      "source": "steam",
+      "appId": 202750,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 14580,
+      "lastPlayed": 1793549299544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2012,
+      "platform": "PC (Windows)",
+      "cover": "/assets/american-nightmare-cover.jpg",
+      "hero": "/assets/american-nightmare-hero.jpg",
+      "logo": "/assets/american-nightmare-logo.png",
+      "description": "Алан Уэйк против своего злого двойника в петле времени, залитой солнцем Аризоны.",
+      "genres": [
+        "Action"
+      ],
+      "developers": [
+        "Remedy Entertainment"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 6
+    },
+    {
+      "id": "alien",
+      "name": "Alien: Isolation",
+      "sortName": "alien: isolation",
+      "source": "steam",
+      "appId": 214490,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 83520,
+      "lastPlayed": 1794499699544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2014,
+      "platform": "PC (Windows)",
+      "cover": "/assets/alien-cover.jpg",
+      "hero": "/assets/alien-hero.jpg",
+      "logo": "/assets/alien-logo.png",
+      "description": "Станция «Севастополь». Один ксеноморф. Никакого оружия. Только тишина, датчик движения и твоё дыхание.",
+      "genres": [
+        "Horror",
+        "Survival"
+      ],
+      "developers": [
+        "Creative Assembly"
+      ],
+      "publishers": [
+        "SEGA"
+      ],
+      "cloud": true,
+      "order": 7
+    },
+    {
+      "id": "amnesia",
+      "name": "Amnesia: The Bunker",
+      "sortName": "amnesia: the bunker",
+      "source": "steam",
+      "appId": 1944430,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 28680,
+      "lastPlayed": 1794240499544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2023,
+      "platform": "PC (Windows)",
+      "cover": "/assets/amnesia-cover.jpg",
+      "hero": "/assets/amnesia-hero.jpg",
+      "logo": "/assets/amnesia-logo.png",
+      "description": "Французский бункер Первой мировой. Генератор, динамо-фонарь и существо, которое слышит каждый твой шаг.",
+      "genres": [
+        "Horror",
+        "Immersive Sim"
+      ],
+      "developers": [
+        "Frictional Games"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 8
+    },
+    {
+      "id": "requiem",
+      "name": "A Plague Tale: Requiem",
+      "sortName": "plague tale: requiem",
+      "source": "steam",
+      "appId": 1182900,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": true,
+      "hidden": false,
+      "playtimeSeconds": 58800,
+      "lastPlayed": 1794413299544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2022,
+      "platform": "PC (Windows)",
+      "cover": "/assets/requiem-cover.jpg",
+      "hero": "/assets/requiem-hero.jpg",
+      "logo": "/assets/requiem-logo.png",
+      "description": "Амиция и Гуго идут на юг, к острову, где, возможно, есть лекарство. Чума идёт за ними.",
+      "genres": [
+        "Action",
+        "Adventure"
+      ],
+      "developers": [
+        "Asobo Studio"
+      ],
+      "publishers": [
+        "Focus Entertainment"
+      ],
+      "cloud": true,
+      "order": 9
+    },
+    {
+      "id": "control",
+      "name": "Control Ultimate Edition",
+      "sortName": "control ultimate edition",
+      "source": "steam",
+      "appId": 870780,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": false,
+      "hidden": false,
+      "playtimeSeconds": 33060,
+      "lastPlayed": 1793808499544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2020,
+      "platform": "PC (Windows)",
+      "cover": "/assets/control-cover.jpg",
+      "hero": "/assets/control-hero.jpg",
+      "logo": "/assets/control-logo.png",
+      "description": "Старейший Дом. Федеральное Бюро Контроля. Джесси Фейден и меняющиеся коридоры власти.",
+      "genres": [
+        "Action",
+        "Metroidvania"
+      ],
+      "developers": [
+        "Remedy Entertainment"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 10
+    },
+    {
+      "id": "hellblade",
+      "name": "Hellblade: Senua's Sacrifice",
+      "sortName": "hellblade: senua's sacrifice",
+      "source": "steam",
+      "appId": 414340,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": false,
+      "hidden": false,
+      "playtimeSeconds": 24240,
+      "lastPlayed": 1792166899544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2017,
+      "platform": "PC (Windows)",
+      "cover": "/assets/hellblade-cover.jpg",
+      "hero": "/assets/hellblade-hero.jpg",
+      "logo": "/assets/hellblade-logo.png",
+      "description": "Кельтская воительница идёт в Хельхейм, чтобы вернуть душу возлюбленного. Голоса не замолкают.",
+      "genres": [
+        "Action",
+        "Adventure"
+      ],
+      "developers": [
+        "Ninja Theory"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 11
+    },
+    {
+      "id": "metro",
+      "name": "Metro Exodus",
+      "sortName": "metro exodus",
+      "source": "steam",
+      "appId": 412020,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": false,
+      "hidden": false,
+      "playtimeSeconds": 68520,
+      "lastPlayed": 1794067699544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2019,
+      "platform": "PC (Windows)",
+      "cover": "/assets/metro-cover.jpg",
+      "hero": "/assets/metro-hero.jpg",
+      "logo": "/assets/metro-logo.png",
+      "description": "Артём и «Аврора» покидают Москву. Год в пути через постапокалиптическую Россию.",
+      "genres": [
+        "FPS",
+        "Survival"
+      ],
+      "developers": [
+        "4A Games"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 12
+    },
+    {
+      "id": "death",
+      "name": "Death Stranding",
+      "sortName": "death stranding",
+      "source": "steam",
+      "appId": 1190460,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": false,
+      "hidden": false,
+      "playtimeSeconds": 114000,
+      "lastPlayed": 1793290099544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2020,
+      "platform": "PC (Windows)",
+      "cover": "/assets/death-cover.jpg",
+      "hero": "/assets/death-hero.jpg",
+      "logo": "/assets/death-logo.png",
+      "description": "Сэм Портер Бриджес соединяет разорванную Америку. Груз, дождь, BT и надежда.",
+      "genres": [
+        "Action",
+        "Open World"
+      ],
+      "developers": [
+        "Kojima Productions"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 13
+    },
+    {
+      "id": "re2",
+      "name": "Resident Evil 2",
+      "sortName": "resident evil 2",
+      "source": "steam",
+      "appId": 883710,
+      "installDir": "",
+      "exePath": "",
+      "launchUri": "",
+      "args": "",
+      "installed": true,
+      "favorite": false,
+      "hidden": false,
+      "playtimeSeconds": 43740,
+      "lastPlayed": 1793722099544,
+      "addedAt": 1792166899544,
+      "releaseYear": 2019,
+      "platform": "PC (Windows)",
+      "cover": "/assets/re2-cover.jpg",
+      "hero": "/assets/re2-hero.jpg",
+      "logo": "/assets/re2-logo.png",
+      "description": "Раккун-Сити. Леон Кеннеди и Клэр Редфилд. Полицейский участок, который больше не защищает.",
+      "genres": [
+        "Horror",
+        "Survival"
+      ],
+      "developers": [
+        "CAPCOM"
+      ],
+      "publishers": [],
+      "cloud": true,
+      "order": 14
+    }
+  ],
+  "settings": {
+    "scanSources": {
+      "steam": true,
+      "epic": true,
+      "gog": true,
+      "ea": true,
+      "ubisoft": true,
+      "battlenet": true,
+      "xbox": true,
+      "itch": true,
+      "shortcuts": true,
+      "registry": true,
+      "folders": true
+    },
+    "customFolders": [],
+    "scanOnStartup": true,
+    "startWithWindows": false,
+    "minimizeToTray": true,
+    "fullscreen": true,
+    "sound": true,
+    "trackPlaytime": true,
+    "showClock": true,
+    "language": "ru"
+  },
+  "views": [
+    {
+      "id": "v-fav",
+      "name": "Избранное",
+      "tab": "favorites",
+      "search": "",
+      "filter": {
+        "source": "all",
+        "installed": "all",
+        "genre": "all"
+      },
+      "sort": "manual"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "n1",
+      "type": "info",
+      "title": "Библиотека обновлена",
+      "body": "Найдено 15 игр. Обложки и фоны загружены.",
+      "ts": 1794755299544,
+      "read": false
+    },
+    {
+      "id": "n2",
+      "type": "success",
+      "title": "Сессия сохранена",
+      "body": "Alan Wake — 1 ч 24 мин добавлено ко времени в игре.",
+      "ts": 1794672499544,
+      "read": false
+    }
+  ],
+  "sessions": []
+}

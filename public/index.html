@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>PlayStation Launcher</title>
+<style>
+  :root{
+    --bg:#05070a; --text:#eef2f6; --muted:#9aa7b4; --accent:#7fd4ff; --sel-border:#8fb8d8;
+    --cw:152px; --ch:224px; --sw:190px; --sh:250px; --gap:50px;
+    --font:"Segoe UI","Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased}
+  button{cursor:pointer;background:none;border:0;padding:0;color:inherit;font-family:inherit}
+  svg{width:1em;height:1em;display:block;fill:currentColor}
+
+  .app{position:fixed;inset:0;overflow:hidden}
+  .bg{position:absolute;inset:-2%;background-size:cover;background-position:center 30%;opacity:0;transition:opacity .7s ease,transform 8s ease;transform:scale(1.02);filter:saturate(.9)}
+  .bg.show{opacity:1;transform:scale(1.06)}
+  .bg-scrim{position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(5,7,10,.28) 0%,rgba(5,7,10,0) 22%,rgba(5,7,10,.12) 52%,rgba(3,5,8,.78) 74%,#020305 100%),
+    linear-gradient(90deg,rgba(20,10,30,.35) 0%,rgba(20,10,30,0) 45%),
+    radial-gradient(120% 80% at 50% 110%,rgba(0,0,0,.7),transparent 60%);pointer-events:none}
+
+  .topbar{position:absolute;top:2.1vh;right:2vw;display:flex;align-items:center;gap:1.55vw;z-index:20}
+  .top-btn{width:30px;height:30px;display:grid;place-items:center;color:#e8eef3;opacity:.92;font-size:26px}
+  .top-btn:hover{opacity:1;transform:translateY(-1px)}
+  .clock{font-size:clamp(18px,1.55vw,30px);font-weight:300;color:#f2f5f8;margin-left:.4vw;font-variant-numeric:tabular-nums}
+
+  .stage{position:absolute;inset:0;z-index:5}
+  .game-info{position:absolute;left:2.6vw;top:36.5vh;max-width:44vw}
+  .logo-wrap{position:relative;min-height:60px;display:flex;align-items:flex-end}
+  .logo-wrap img{max-width:min(620px,33vw);max-height:15vh;width:auto;height:auto;filter:drop-shadow(0 4px 14px rgba(0,0,0,.65))}
+  .fallback-title{font-family:Georgia,serif;font-weight:400;font-size:clamp(26px,3vw,56px);letter-spacing:.12em;text-transform:uppercase;margin:0;line-height:1.05;text-shadow:0 4px 18px rgba(0,0,0,.7)}
+  .logo-wrap.no-logo img{display:none}.logo-wrap.no-logo .fallback-title{display:block}
+  .meta{display:flex;align-items:center;gap:1.05vw;margin-top:1.6vh;font-size:clamp(15px,1.25vw,24px);color:#e6ebf0;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+  .playtime-chip{font-size:.72em;color:var(--accent);background:rgba(127,212,255,.1);border:1px solid rgba(127,212,255,.25);padding:.2em .6em;border-radius:999px;margin-left:.3vw;display:none}
+  .playtime-chip.on{display:inline-block}
+
+  .carousel{position:absolute;left:0;right:0;bottom:19.8vh;height:calc(var(--sh) + 24px);overflow:visible}
+  .track{position:absolute;left:0;bottom:0;height:var(--sh);display:flex;align-items:center;gap:var(--gap);will-change:transform;transition:transform .42s cubic-bezier(.22,.8,.3,1)}
+  .cover{position:relative;flex:0 0 auto;width:var(--cw);height:var(--ch);border-radius:8px;overflow:hidden;background:#111;box-shadow:0 12px 30px rgba(0,0,0,.55);transition:width .32s,height .32s,transform .2s,box-shadow .3s;cursor:pointer;outline:none}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .cover .cover-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:12px;font-weight:600;font-size:14px;background:linear-gradient(160deg,#1b2430,#0b0f14);color:#cfd8e2}
+  .cover.no-img img{display:none}.cover.no-img .cover-fallback{display:flex}
+  .cover.selected{width:var(--sw);height:var(--sh);box-shadow:0 0 0 3px var(--sel-border),0 0 0 5px rgba(143,184,216,.25),0 22px 50px rgba(0,0,0,.7);transform:translateY(-2px)}
+  .cover.selected::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);pointer-events:none}
+
+  .tabs{position:absolute;left:0;right:0;bottom:10.2vh;display:flex;justify-content:center;gap:1.6vw;z-index:6}
+  .tabs button{font-size:clamp(15px,1.2vw,23px);color:#dfe6ec;padding:.32em 1.05em;border-radius:8px;transition:background .18s,color .18s}
+  .tabs button.active{background:#f4f6f8;color:#0b0f14;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+
+  .hints{position:absolute;left:0;right:0;bottom:2.6vh;display:flex;justify-content:center;gap:1.9vw;z-index:6}
+  .hint{display:flex;align-items:center;gap:.55vw;font-size:clamp(12px,.92vw,17px);color:#e4e9ee}
+  .btn-glyph{display:inline-grid;place-items:center;width:1.55em;height:1.55em;border-radius:50%;border:1.5px solid #dfe6ec;color:#fff;font-size:.82em;font-weight:700}
+  .btn-glyph.lb{border-radius:5px;width:1.9em;font-size:.7em}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v11m0 0l-4.5-4.5M12 14l4.5-4.5M4 18.5h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1112 0v5l1.8 2.2H4.2L6 16z" fill="currentColor"/><path d="M10 20a2 2 0 004 0" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="5" r="1.7"/><circle cx="12" cy="5" r="1.7"/><circle cx="19" cy="5" r="1.7"/><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/><circle cx="5" cy="19" r="1.7"/><circle cx="12" cy="19" r="1.7"/><circle cx="19" cy="19" r="1.7"/></g></symbol>
+  <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7 8h10a5 5 0 015 5v2.5a3.5 3.5 0 01-6.4 2L14.5 16h-5l-1.1 1.5a3.5 3.5 0 01-6.4-2V13a5 5 0 015-5z" fill="currentColor"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z" fill="currentColor"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 01-.4-9A6 6 0 0118.2 10 3.8 3.8 0 0117.5 18H7z" fill="currentColor"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="app">
+  <div class="bg" id="bg" style="background-image: url('./assets/plague-bg.jpg'); opacity: 1;"></div>
+  <div class="bg-scrim"></div>
+
+  <header class="topbar">
+    <button class="top-btn" title="Сканировать"><svg><use href="#i-download"/></svg></button>
+    <button class="top-btn" title="Уведомления"><svg><use href="#i-bell"/></svg></button>
+    <button class="top-btn" title="Библиотека"><svg><use href="#i-grid"/></svg></button>
+    <button class="top-btn" title="Геймпад"><svg><use href="#i-gamepad"/></svg></button>
+    <button class="top-btn" title="Звук"><svg><use href="#i-volume"/></svg></button>
+    <div class="clock" id="clock">12:00</div>
+  </header>
+
+  <main class="stage">
+    <section class="game-info">
+      <div class="logo-wrap" id="logoWrap">
+        <img id="gameLogo" src="./assets/plague-logo-white.png" alt="" onerror="this.parentNode.classList.add('no-logo'); document.getElementById('gameTitle').textContent = 'A PLAGUE TALE';" />
+        <h1 id="gameTitle" class="fallback-title"></h1>
+      </div>
+      <div class="meta">
+        <svg style="font-size:1.15em"><use href="#i-star"/></svg>
+        <span>PC (Windows)</span>
+        <span>2019</span>
+        <svg class="cloud" style="font-size:1.15em"><use href="#i-cloud"/></svg>
+        <span class="playtime-chip on">17 ч 20 мин</span>
+      </div>
+    </section>
+
+    <section class="carousel">
+      <div class="track" id="track">
+        <!-- Заглушка для карусели, чтобы было видно эффект -->
+        <div class="cover"><div class="cover-fallback">Игра 1</div></div>
+        <div class="cover"><div class="cover-fallback">Игра 2</div></div>
+        <div class="cover selected"><img src="./assets/plague-cover.jpg" onerror="this.parentNode.classList.add('no-img')"><div class="cover-fallback">A Plague Tale</div></div>
+        <div class="cover"><div class="cover-fallback">Игра 4</div></div>
+        <div class="cover"><div class="cover-fallback">Игра 5</div></div>
+        <div class="cover"><div class="cover-fallback">Игра 6</div></div>
+      </div>
+    </section>
+
+    <nav class="tabs" id="tabs">
+      <button>All</button>
+      <button class="active">Favorites</button>
+      <button>Most Played</button>
+      <button>Recently Played</button>
+    </nav>
+
+    <footer class="hints">
+      <button class="hint"><span class="btn-glyph x">X</span><span>Играть</span></button>
+      <button class="hint"><span class="btn-glyph a">A</span><span>Подробная информация</span></button>
+      <button class="hint"><span class="btn-glyph menu">≡</span><span>Настройки игры</span></button>
+      <button class="hint"><span class="btn-glyph y">Y</span><span>Поиск</span></button>
+      <button class="hint"><span class="btn-glyph lb">LB</span><span>Фильтр</span></button>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Часы
+  setInterval(() => {
+    const d = new Date();
+    document.getElementById('clock').textContent = 
+      String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  }, 1000);
+
+  // Клики по карусели (чтобы было ощущение работы)
+  const covers = document.querySelectorAll('.cover');
+  covers.forEach(c => {
+    c.addEventListener('click', () => {
+      covers.forEach(x => x.classList.remove('selected'));
+      c.classList.add('selected');
+      
+      // Если у игры нет картинки, но мы кликнули, покажем фон Plague (чтобы было красиво)
+      document.getElementById('bg').style.backgroundImage = "url('./assets/plague-bg.jpg')";
+      
+      // Если это центральная игра - показываем лого
+      if (c.classList.contains('selected') && c.querySelector('img')) {
+        document.getElementById('logoWrap').classList.remove('no-logo');
+        document.getElementById('gameLogo').src = './assets/plague-logo-white.png';
+        document.getElementById('gameTitle').textContent = '';
+      } else {
+        document.getElementById('logoWrap').classList.add('no-logo');
+        document.getElementById('gameTitle').textContent = c.querySelector('.cover-fallback').textContent;
+      }
+    });
+  });
+
+  // Клики по табам
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

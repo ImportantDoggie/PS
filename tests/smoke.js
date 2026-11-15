@@ -1,0 +1,28 @@
+'use strict';
+const { createApp } = require('../server');
+const assert = require('assert');
+(async () => {
+  const { app, store } = createApp({ demo: true, dataFile: null });
+  const server = app.listen(0);
+  const port = server.address().port;
+  const base = `http://127.0.0.1:${port}/api`;
+  const j = async (p, m = 'GET', b) => { const r = await fetch(base + p, { method: m, headers: { 'Content-Type': 'application/json' }, body: b ? JSON.stringify(b) : undefined }); return { status: r.status, body: await r.json() }; };
+  let r = await j('/state'); assert(r.body.games.length >= 15, 'seed games'); assert(r.body.mode === 'preview');
+  r = await j('/games', 'POST', { name: 'Test Game', exePath: '', favorite: true }); assert(r.body.ok); const id = r.body.game.id;
+  r = await j(`/games/${id}`, 'PATCH', { playtimeSeconds: 123 }); assert(r.body.game.playtimeSeconds === 123);
+  r = await j(`/games/${id}/favorite`, 'POST', {}); assert(r.body.game.favorite === false);
+  r = await j(`/games/${id}/launch`, 'POST'); assert(r.body.ok && r.body.demo);
+  r = await j('/state'); assert(r.body.sessions.some(s => s.gameId === id));
+  r = await j(`/games/${id}/stop`, 'POST'); assert(r.body.ok);
+  r = await j(`/games/${id}`, 'DELETE'); assert(r.body.ok);
+  r = await j(`/games/${id}/restore`, 'POST', r.body.game); assert(r.body.ok);
+  r = await j('/bulk', 'POST', { ids: [id], action: 'delete' }); assert(r.body.removed.length === 1);
+  r = await j('/settings', 'POST', { sound: false }); assert(r.body.settings.sound === false);
+  r = await j('/views', 'POST', { name: 'T', tab: 'all' }); assert(r.body.view.id);
+  r = await j('/scan', 'POST'); assert(r.body.ok);
+  await new Promise(res => setTimeout(res, 2600));
+  r = await j('/scan/status'); assert(r.body.phase === 'done');
+  server.close(); store.save(true);
+  console.log('SMOKE OK');
+  process.exit(0);
+})().catch(e => { console.error(e); process.exit(1); });
